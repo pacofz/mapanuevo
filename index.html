@@ -24,7 +24,7 @@
         .logo-header { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 1px; }
         .stats { display: flex; gap: 40px; }
         .stat-item { text-align: center; }
-        .stat-value { display: block; font-size: 18px; font-weight: 300; color: var(--accent-bordo); min-width: 80px; }
+        .stat-value { display: block; font-size: 18px; font-weight: 300; color: var(--accent-bordo); min-width: 60px; }
         .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
 
         #map { width: 100%; height: 100vh; background: #f8f8f8; }
@@ -65,6 +65,12 @@
         .project-info { padding: 20px; }
         .project-info h3 { margin: 0 0 10px 0; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; }
         .project-meta { margin-top: 15px; display: flex; gap: 20px; font-size: 10px; font-weight: 400; text-transform: uppercase; color: #999; letter-spacing: 1px; }
+
+        @media (max-width: 600px) {
+            header { padding: 0 20px; }
+            .logo-header { font-size: 18px; }
+            .stats { gap: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -92,47 +98,57 @@
                 allProjects = await response.json();
                 renderMap();
                 updateCounters();
-            } catch (e) { console.error("Error al cargar proyectos:", e); }
+            } catch (e) { 
+                console.error("Error cargando base de datos:", e); 
+            }
         }
 
         function updateCounters() {
+            // Cálculo automático: Suma de elementos y suma de la propiedad m2
             const totalProyectos = allProjects.length;
             const totalM2 = allProjects.reduce((acc, p) => acc + (p.m2 || 0), 0);
             
-            const duration = 6000; // 6 segundos
+            const duration = 6000; // 6 segundos de duración
             const start = performance.now();
 
             function animate(currentTime) {
                 const elapsed = currentTime - start;
                 const progress = Math.min(elapsed / duration, 1);
 
-                // Ease Out Quad: empieza rápido, termina lento
+                // Ease Out Quad: Comienza fluido y se ralentiza notablemente al final
                 const easeOut = 1 - (1 - progress) * (1 - progress);
 
                 const currentProyectos = Math.floor(easeOut * totalProyectos);
                 const currentM2 = Math.floor(easeOut * totalM2);
 
                 document.getElementById('count-obras').innerText = currentProyectos;
-                document.getElementById('count-m2').innerText = currentM2.toLocaleString();
+                document.getElementById('count-m2').innerText = currentM2.toLocaleString('es-AR');
 
                 if (progress < 1) {
                     requestAnimationFrame(animate);
                 } else {
                     document.getElementById('count-obras').innerText = totalProyectos;
-                    document.getElementById('count-m2').innerText = totalM2.toLocaleString();
+                    document.getElementById('count-m2').innerText = totalM2.toLocaleString('es-AR');
                 }
             }
             requestAnimationFrame(animate);
         }
 
         function renderMap() {
-            map = L.map('map', { center: [-34.48, -58.55], zoom: 11, zoomControl: false, attributionControl: false });
+            map = L.map('map', { 
+                center: [-34.48, -58.55], 
+                zoom: 11, 
+                zoomControl: false, 
+                attributionControl: false 
+            });
+            
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
 
             map.on('zoomend move', () => {
                 const container = document.getElementById('map');
-                if (map.getZoom() < 11) container.classList.add('hide-text');
-                else {
+                if (map.getZoom() < 11) {
+                    container.classList.add('hide-text');
+                } else {
                     container.classList.remove('hide-text');
                     handleCollisions();
                 }
@@ -150,11 +166,15 @@
                 });
 
                 const marker = L.marker([project.lat, project.lng], { icon: customIcon }).addTo(map);
+                
                 marker.bindTooltip(project.title, { 
-                    permanent: true, direction: 'top', className: 'leaflet-tooltip-own', offset: [0, isSD ? -12 : -38] 
+                    permanent: true, 
+                    direction: 'top', 
+                    className: 'leaflet-tooltip-own', 
+                    offset: [0, isSD ? -12 : -38] 
                 });
 
-                marker.on('click', () => detectImagesAndShowPopup(marker, project));
+                marker.on('click', () => showPopup(marker, project));
                 tooltips.push(marker);
             });
 
@@ -169,8 +189,8 @@
                 if (!tooltipElement) return;
 
                 tooltipElement.classList.remove('collision-hidden');
-                const markerElement = marker._icon.querySelector('.marker-line');
-                if(markerElement) markerElement.classList.remove('collision-hidden');
+                const markerLine = marker._icon.querySelector('.marker-line');
+                if(markerLine) markerLine.classList.remove('collision-hidden');
 
                 const rect = tooltipElement.getBoundingClientRect();
                 const isColliding = visibleTooltips.some(otherRect => {
@@ -180,56 +200,28 @@
 
                 if (isColliding) {
                     tooltipElement.classList.add('collision-hidden');
-                    if(markerElement) markerElement.classList.add('collision-hidden');
+                    if(markerLine) markerLine.classList.add('collision-hidden');
                 } else {
                     visibleTooltips.push(rect);
                 }
             });
         }
 
-        async function detectImagesAndShowPopup(marker, project) {
-            let count = 0;
-            let checkNext = true;
-            while (checkNext && count < 15) {
-                const exists = await new Promise(resolve => {
-                    const img = new Image();
-                    img.onload = () => resolve(true);
-                    img.onerror = () => resolve(false);
-                    img.src = `assets/images/${project.folder}/1.${project.imgExt}`;
-                });
-                // Nota: Aquí se simplifica la detección para el popup. 
-                // En un entorno real se recomienda que el JSON ya traiga el imgCount verificado.
-                if (exists) { count = 1; checkNext = false; } 
-                else checkNext = false;
-            }
-            
+        function showPopup(marker, project) {
             const popupHtml = `
                 <div class="gallery-container">
-                    <button class="nav-btn" style="left:10px; display:none" id="prev-${project.folder}" onclick="event.stopPropagation(); changeImg('${project.folder}', -1)">&#10094;</button>
-                    <button class="nav-btn" style="right:10px; display:none" id="next-${project.folder}" onclick="event.stopPropagation(); changeImg('${project.folder}', 1)">&#10095;</button>
-                    <img id="img-obj-${project.folder}" src="assets/images/${project.folder}/1.${project.imgExt}" class="gallery-img" onerror="this.src='https://via.placeholder.com/300x200?text=Proximamente'">
+                    <img id="img-obj-${project.folder}" src="assets/images/${project.folder}/1.${project.imgExt}" class="gallery-img" onerror="this.src='https://via.placeholder.com/300x200?text=${project.title}'">
                 </div>
                 <div class="project-info">
                     <h3>${project.title}</h3>
-                    <p style="font-size:12px; font-weight:300;">${project.desc}</p>
-                    <div class="project-meta"><span>AÑO ${project.year}</span><span>${project.m2} M²</span></div>
+                    <p style="font-size:12px; font-weight:300;">${project.desc || 'Refacción integral de vivienda.'}</p>
+                    <div class="project-meta">
+                        <span>AÑO ${project.year}</span>
+                        <span>${project.m2} M²</span>
+                    </div>
                 </div>`;
             marker.bindPopup(popupHtml).openPopup();
         }
-
-        window.changeImg = function(folder, direction) {
-            const project = allProjects.find(p => p.folder === folder);
-            const imgElement = document.getElementById(`img-obj-${folder}`);
-            if (!galleryState[folder]) galleryState[folder] = 1;
-            imgElement.classList.add('fading');
-            setTimeout(() => {
-                let current = galleryState[folder] + direction;
-                // Aquí se asume que si hay más imágenes siguen el patrón 1, 2, 3...
-                galleryState[folder] = current;
-                imgElement.src = `assets/images/${folder}/${current}.${project.imgExt}`;
-                imgElement.onload = () => imgElement.classList.remove('fading');
-            }, 300);
-        };
 
         loadApp();
     </script>
