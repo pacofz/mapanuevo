@@ -6,7 +6,7 @@
     <title>Estudio Cupula | Archivo Dinámico</title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     
     <style>
         :root { --text-color: #1a1a1a; --accent-bordo: #800020; }
@@ -23,54 +23,53 @@
 
         .logo-header { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 1px; }
         .stats { display: flex; gap: 40px; }
-        .stat-item { text-align: center; }
-        .stat-value { display: block; font-size: 18px; font-weight: 300; color: var(--accent-bordo); min-width: 60px; }
+        .stat-item { text-align: center; cursor: pointer; position: relative; padding: 10px; }
+        .stat-value { display: block; font-size: 18px; font-weight: 300; color: var(--accent-bordo); min-width: 80px; }
         .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+
+        .dropdown-menu {
+            position: absolute; top: 100%; right: 0; 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            display: none; z-index: 1001;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .dropdown-menu.active { display: block; }
+
+        #m2-menu { min-width: 220px; }
+        #proyectos-menu { min-width: 380px; max-height: 450px; overflow-y: auto; text-align: left; }
+
+        .m2-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 12px; border-bottom: 1px solid rgba(0,0,0,0.03); padding-bottom: 6px; }
+        .m2-row span:last-child { font-weight: 600; color: var(--accent-bordo); }
 
         #map { width: 100%; height: 100vh; background: #f8f8f8; }
 
-        .marker-dot { width: 8px !important; height: 8px !important; background-color: var(--accent-bordo); border-radius: 50%; border: 1.5px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); }
-        .marker-santo-domingo { width: 16px !important; height: 16px !important; background-color: var(--accent-bordo); border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 8px rgba(0,0,0,0.3); }
-
-        .marker-line { position: absolute; bottom: 4px; left: 50%; width: 1px; height: 35px; background: var(--accent-bordo); transform: translateX(-0.5px); transition: opacity 0.3s ease; }
-
-        .leaflet-tooltip-own { 
-            background: transparent !important; 
-            border: none !important; 
-            box-shadow: none !important; 
-            color: var(--text-color) !important; 
-            font-family: 'Inter', sans-serif; 
-            font-weight: 300; 
-            font-size: 10.5px; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px; 
-            padding: 0 !important; 
-            margin-top: -38px !important; 
-            transition: opacity 0.3s ease; 
-            white-space: nowrap; 
-            pointer-events: none;
-        }
-
-        .no-line .marker-line { display: none !important; }
-        .hide-text .leaflet-tooltip-own, .hide-text .marker-line { opacity: 0 !important; }
-        .collision-hidden { opacity: 0 !important; }
-
-        .leaflet-popup-content-wrapper { border-radius: 0; padding: 0; overflow: hidden; }
-        .leaflet-popup-content { margin: 0; width: 300px !important; }
-        .gallery-container { position: relative; width: 300px; height: 200px; background: #000; overflow: hidden; }
-        .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
-        .gallery-img.fading { opacity: 0.3; }
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 30px; height: 30px; cursor: pointer; font-weight: bold; z-index: 10; display: none; }
+        /* Estilo Marcadores Normales */
+        .marker-dot { width: 8px !important; height: 8px !important; background-color: var(--accent-bordo); border-radius: 50%; border: 1.5px solid #fff; transition: all 0.4s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         
-        .project-info { padding: 20px; }
-        .project-info h3 { margin: 0 0 10px 0; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; }
-        .project-meta { margin-top: 15px; display: flex; gap: 20px; font-size: 10px; font-weight: 400; text-transform: uppercase; color: #999; letter-spacing: 1px; }
+        /* AJUSTE: Línea más alta (35px) para estar más cerca del texto */
+        .marker-line { position: absolute; bottom: 4px; left: 50%; width: 1px; height: 35px; background: var(--accent-bordo); transform: translateX(-0.5px); transition: opacity 0.3s ease; transform-origin: bottom; }
+        
+        /* Estilo Especial Santo Domingo */
+        .marker-studio-dot { width: 24px !important; height: 24px !important; background-color: var(--accent-bordo) !important; border: none !important; border-radius: 50%; box-shadow: 0 0 15px rgba(0,0,0,0.4); cursor: pointer; transition: transform 0.3s ease; }
+        
+        .leaflet-tooltip-own { background: transparent !important; border: none !important; box-shadow: none !important; color: var(--text-color) !important; font-size: 10.5px; text-transform: uppercase; margin-top: -35px !important; pointer-events: auto !important; transition: opacity 0.3s ease; }
+        
+        /* Tooltip Especial Santo Domingo */
+        .tooltip-studio { font-weight: 700 !important; font-size: 13px !important; margin-top: -15px !important; letter-spacing: 0.5px; color: #000 !important; }
 
-        @media (max-width: 600px) {
-            header { padding: 0 20px; }
-            .logo-header { font-size: 18px; }
-            .stats { gap: 20px; }
-        }
+        /* CLASE PARA OCULTAR CUANDO HAY DESZOOM O COLISIÓN */
+        .hide-on-zoom, .collision-hidden { opacity: 0 !important; pointer-events: none !important; }
+
+        .leaflet-popup-content-wrapper { background: transparent !important; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .leaflet-popup-content { margin: 0; width: 300px !important; }
+        .project-info { padding: 20px; background: rgba(255, 255, 255, 0.85) !important; backdrop-filter: blur(12px) !important; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -78,8 +77,20 @@
     <header>
         <div class="logo-header">ESTUDIO CÚPULA</div>
         <div class="stats">
-            <div class="stat-item"><span class="stat-value" id="count-obras">0</span><span class="stat-label">Proyectos</span></div>
-            <div class="stat-item"><span class="stat-value" id="count-m2">0</span><span class="stat-label">m² Totales</span></div>
+            <div class="stat-item" onclick="toggleMenu('proyectos-menu')">
+                <span class="stat-value" id="count-obras">0</span>
+                <span class="stat-label">Proyectos ▾</span>
+                <div id="proyectos-menu" class="dropdown-menu"></div>
+            </div>
+
+            <div class="stat-item" onclick="toggleMenu('m2-menu')">
+                <span class="stat-value" id="count-m2">0</span>
+                <span class="stat-label">m² Totales ▾</span>
+                <div id="m2-menu" class="dropdown-menu">
+                    <div class="m2-row"><span>Construido</span><span id="m2-construido">0</span></div>
+                    <div class="m2-row"><span>Refaccionado</span><span id="m2-refaccionado">0</span></div>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -88,140 +99,180 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         let allProjects = [];
-        let galleryState = {};
         let map;
-        let tooltips = [];
+        let markersMap = {};
+        let markerList = [];
 
         async function loadApp() {
             try {
                 const response = await fetch('proyectos.json');
                 allProjects = await response.json();
+                allProjects.sort((a, b) => a.title.localeCompare(b.title));
                 renderMap();
                 updateCounters();
-            } catch (e) { 
-                console.error("Error cargando base de datos:", e); 
-            }
+                renderProyectosList();
+            } catch (e) { console.error("Error cargando el JSON:", e); }
         }
 
         function updateCounters() {
-            // Cálculo automático: Suma de elementos y suma de la propiedad m2
-            const totalProyectos = allProjects.length;
-            const totalM2 = allProjects.reduce((acc, p) => acc + (p.m2 || 0), 0);
+            const parseM2 = (val) => parseFloat(val) || 0;
+            const totalProjectsGoal = allProjects.length;
+            const totalM2Goal = allProjects.reduce((acc, p) => acc + parseM2(p.m2), 0);
             
-            const duration = 6000; // 6 segundos de duración
+            const duration = 5000; 
             const start = performance.now();
 
             function animate(currentTime) {
                 const elapsed = currentTime - start;
                 const progress = Math.min(elapsed / duration, 1);
+                const acceleration = Math.pow(progress, 3); 
 
-                // Ease Out Quad: Comienza fluido y se ralentiza notablemente al final
-                const easeOut = 1 - (1 - progress) * (1 - progress);
+                const currentProjects = Math.floor(acceleration * totalProjectsGoal);
+                const currentM2 = Math.floor(acceleration * totalM2Goal);
 
-                const currentProyectos = Math.floor(easeOut * totalProyectos);
-                const currentM2 = Math.floor(easeOut * totalM2);
+                document.getElementById('count-obras').innerText = currentProjects;
+                document.getElementById('count-m2').innerText = currentM2.toLocaleString();
 
-                document.getElementById('count-obras').innerText = currentProyectos;
-                document.getElementById('count-m2').innerText = currentM2.toLocaleString('es-AR');
-
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    document.getElementById('count-obras').innerText = totalProyectos;
-                    document.getElementById('count-m2').innerText = totalM2.toLocaleString('es-AR');
+                if (progress < 1) requestAnimationFrame(animate);
+                else {
+                    document.getElementById('count-obras').innerText = totalProjectsGoal;
+                    document.getElementById('count-m2').innerText = totalM2Goal.toLocaleString();
                 }
             }
+
+            const m2Construido = allProjects.filter(p => p.m2Type === 'construido').reduce((acc, p) => acc + parseM2(p.m2), 0);
+            const m2Refaccionado = allProjects.filter(p => p.m2Type === 'refaccionado').reduce((acc, p) => acc + parseM2(p.m2), 0);
+            document.getElementById('m2-construido').innerText = m2Construido.toLocaleString() + ' m²';
+            document.getElementById('m2-refaccionado').innerText = m2Refaccionado.toLocaleString() + ' m²';
+
             requestAnimationFrame(animate);
         }
 
-        function renderMap() {
-            map = L.map('map', { 
-                center: [-34.48, -58.55], 
-                zoom: 11, 
-                zoomControl: false, 
-                attributionControl: false 
-            });
-            
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
+        function renderProyectosList() {
+            const container = document.getElementById('proyectos-menu');
+            container.innerHTML = allProjects.map(p => `
+                <div class="proyecto-item" onclick="handleNavigation('${p.title}')" style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.03); cursor:pointer;">
+                    <span style="font-weight:500; text-transform:uppercase; font-size:11px;">${p.title}</span>
+                    <span style="color:#888; font-weight:300; font-size:11px;">${p.year}</span>
+                </div>
+            `).join('');
+        }
 
-            map.on('zoomend move', () => {
-                const container = document.getElementById('map');
-                if (map.getZoom() < 11) {
-                    container.classList.add('hide-text');
+        function handleNavigation(title) {
+            if (title.toLowerCase() === "santo domingo") {
+                window.location.href = "estudio.html";
+            } else {
+                const marker = markersMap[title];
+                if (marker) {
+                    map.flyTo(marker.getLatLng(), 15);
+                    marker.openPopup();
+                }
+            }
+        }
+
+        function toggleMenu(id) {
+            document.querySelectorAll('.dropdown-menu').forEach(m => {
+                if(m.id !== id) m.classList.remove('active');
+            });
+            document.getElementById(id).classList.toggle('active');
+        }
+
+        // FUNCIÓN MEJORADA: Anti-colisión + Zoom
+        function updateVisibility() {
+            const zoom = map.getZoom();
+            const threshold = 13; 
+            const visibleRects = [];
+
+            markerList.forEach(marker => {
+                const tooltip = marker.getTooltip();
+                const iconContainer = marker._icon;
+                const line = iconContainer ? iconContainer.querySelector('.marker-line') : null;
+
+                if (!tooltip || !tooltip._container) return;
+
+                // Reset inicial
+                tooltip._container.classList.remove('hide-on-zoom', 'collision-hidden');
+                if (line) line.classList.remove('hide-on-zoom', 'collision-hidden');
+
+                // 1. Regla por Zoom
+                if (zoom < threshold) {
+                    tooltip._container.classList.add('hide-on-zoom');
+                    if (line) line.classList.add('hide-on-zoom');
+                    return;
+                }
+
+                // 2. Regla Anti-Colisión (solo si pasa el zoom)
+                const rect = tooltip._container.getBoundingClientRect();
+                const overlaps = visibleRects.some(r => {
+                    return !(rect.right < r.left || rect.left > r.right || rect.bottom < r.top || rect.top > r.bottom);
+                });
+
+                if (overlaps && marker.options.title !== "Santo Domingo") {
+                    tooltip._container.classList.add('collision-hidden');
+                    if (line) line.classList.add('collision-hidden');
                 } else {
-                    container.classList.remove('hide-text');
-                    handleCollisions();
+                    visibleRects.push(rect);
                 }
             });
+        }
+
+        function renderMap() {
+            map = L.map('map', { center: [-34.48, -58.55], zoom: 11, zoomControl: false, attributionControl: false });
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
 
             allProjects.forEach(project => {
                 if (!project.lat || !project.lng) return;
-                const isSD = project.title.toLowerCase().includes("santo domingo");
+                
+                const isStudio = project.title.toLowerCase() === "santo domingo";
                 
                 const customIcon = L.divIcon({
-                    className: isSD ? 'marker-santo-domingo no-line' : 'marker-dot',
-                    iconSize: isSD ? [16, 16] : [8, 8],
-                    iconAnchor: isSD ? [8, 8] : [4, 4],
-                    html: isSD ? '' : '<div class="marker-line"></div>'
+                    className: isStudio ? 'marker-studio-dot' : 'marker-dot',
+                    iconSize: isStudio ? [24, 24] : [8, 8],
+                    iconAnchor: isStudio ? [12, 12] : [4, 4],
+                    html: isStudio ? '' : '<div class="marker-line"></div>'
                 });
 
-                const marker = L.marker([project.lat, project.lng], { icon: customIcon }).addTo(map);
+                const marker = L.marker([project.lat, project.lng], { icon: customIcon, title: project.title }).addTo(map);
                 
                 marker.bindTooltip(project.title, { 
-                    permanent: true, 
-                    direction: 'top', 
-                    className: 'leaflet-tooltip-own', 
-                    offset: [0, isSD ? -12 : -38] 
+                    permanent: true, direction: 'top', 
+                    className: isStudio ? 'leaflet-tooltip-own tooltip-studio' : 'leaflet-tooltip-own', 
+                    offset: isStudio ? [0, -15] : [0, -35], interactive: true 
                 });
-
-                marker.on('click', () => showPopup(marker, project));
-                tooltips.push(marker);
-            });
-
-            setTimeout(handleCollisions, 500);
-        }
-
-        function handleCollisions() {
-            const visibleTooltips = [];
-            tooltips.forEach(marker => {
-                const tooltip = marker.getTooltip();
-                const tooltipElement = tooltip ? tooltip._container : null;
-                if (!tooltipElement) return;
-
-                tooltipElement.classList.remove('collision-hidden');
-                const markerLine = marker._icon.querySelector('.marker-line');
-                if(markerLine) markerLine.classList.remove('collision-hidden');
-
-                const rect = tooltipElement.getBoundingClientRect();
-                const isColliding = visibleTooltips.some(otherRect => {
-                    return !(rect.right < otherRect.left || rect.left > otherRect.right || 
-                             rect.bottom < otherRect.top || rect.top > otherRect.bottom);
-                });
-
-                if (isColliding) {
-                    tooltipElement.classList.add('collision-hidden');
-                    if(markerLine) markerLine.classList.add('collision-hidden');
-                } else {
-                    visibleTooltips.push(rect);
-                }
-            });
-        }
-
-        function showPopup(marker, project) {
-            const popupHtml = `
-                <div class="gallery-container">
-                    <img id="img-obj-${project.folder}" src="assets/images/${project.folder}/1.${project.imgExt}" class="gallery-img" onerror="this.src='https://via.placeholder.com/300x200?text=${project.title}'">
-                </div>
-                <div class="project-info">
-                    <h3>${project.title}</h3>
-                    <p style="font-size:12px; font-weight:300;">${project.desc || 'Refacción integral de vivienda.'}</p>
-                    <div class="project-meta">
-                        <span>AÑO ${project.year}</span>
-                        <span>${project.m2} M²</span>
+                
+                const popupHtml = `
+                    <div style="width:300px; height:200px; background:#000; overflow:hidden;">
+                        <img src="assets/images/${project.folder}/1.${project.imgExt}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://via.placeholder.com/300x200?text=Estudio+Cupula'">
                     </div>
-                </div>`;
-            marker.bindPopup(popupHtml).openPopup();
+                    <div class="project-info">
+                        <h3 style="margin:0 0 8px 0; font-family:'Playfair Display',serif;">${project.title}</h3>
+                        <p style="font-size:12px; margin:0; color:#444;">${project.desc}</p>
+                        <div style="margin-top:10px; font-size:9px; color:#888; text-transform:uppercase;">${project.year} • ${project.m2} m² • ${project.m2Type}</div>
+                    </div>`;
+                
+                marker.bindPopup(popupHtml);
+                markersMap[project.title] = marker;
+                markerList.push(marker);
+
+                const triggerAction = () => {
+                    if (isStudio) window.location.href = "estudio.html";
+                    else marker.openPopup();
+                };
+
+                marker.on('click', triggerAction);
+                marker.on('tooltipclick', triggerAction);
+            });
+
+            // Escuchar cambios para limpiar el mapa
+            map.on('zoomend move moveend', updateVisibility);
+            setTimeout(updateVisibility, 800);
         }
+
+        window.onclick = (e) => {
+            if (!e.target.closest('.stat-item')) {
+                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('active'));
+            }
+        };
 
         loadApp();
     </script>
