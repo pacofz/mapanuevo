@@ -22,6 +22,8 @@
             margin: 0; 
             background-color: #fff;
             -webkit-font-smoothing: antialiased;
+            /* Evita saltos bruscos en móvil */
+            overflow-x: hidden;
         }
 
         /* Navegación Minimalista */
@@ -37,8 +39,12 @@
 
         /* Hero Split - Estilo Moderno */
         .hero { 
-            height: 100vh; display: flex; align-items: center; 
-            padding: 0 10%; background: var(--soft-gray);
+            height: 100vh; 
+            height: 100dvh; /* Altura dinámica para navegadores móviles */
+            display: flex; 
+            align-items: center; 
+            padding: 0 10%; 
+            background: var(--soft-gray);
         }
         .hero-content { max-width: 800px; }
         .hero h1 { 
@@ -96,11 +102,29 @@
         .c-link:hover { opacity: 1; color: var(--accent); }
         .c-link i { font-size: 1.2rem; width: 25px; color: var(--accent); }
 
+        /* AJUSTES PARA RESPONSIVE / MOBILE */
         @media (max-width: 900px) {
+            .nav-back { top: 20px; left: 20px; }
             .section-grid, .partners-grid, .contact-box { grid-template-columns: 1fr; gap: 50px; }
             .hero { padding: 0 5%; }
             .main-content { padding: 80px 5%; }
-            .contact-box { padding: 40px; }
+            .contact-box { padding: 40px 30px; }
+            
+            /* Asegura que elementos largos no rompan el ancho de pantalla */
+            .manifesto { font-size: 1.8rem; }
+            
+            /* Si tienes un menú desplegable, asegúrate de que sea scrolleable */
+            .dropdown-content, .mobile-menu { 
+                max-height: 80vh; 
+                overflow-y: auto; 
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 3.5rem; }
+            .contact-box h2 { font-size: 2rem; }
+            .partner-card { padding: 30px 20px; }
         }
     </style>
 </head>
