@@ -9,8 +9,8 @@
     "m2": 30,
     "m2Type": "refaccionado",
     "desc": "Remodelación de clientes para casa importante",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Fogonero",
@@ -22,12 +22,12 @@
     "m2": 12,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Los Castores",
-    "folder": "Los_Castores",
+    "folder": "Los Castores",
     "year": "2025",
     "area": "Nordelta",
     "lat": -34.40721290975913,
@@ -35,12 +35,12 @@
     "m2": 340,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Cabos del Lago",
-    "folder": "Cabos_del_Lago",
+    "folder": "Cabos del Lago",
     "year": "2025",
     "area": "Nordelta",
     "lat": -34.41350256760268,
@@ -48,12 +48,12 @@
     "m2": 60,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "San Sebastian",
-    "folder": "San_Sebastian",
+    "folder": "San Sebastian",
     "year": "2021",
     "area": "Escobar",
     "lat": -34.356545990053434,
@@ -61,8 +61,8 @@
     "m2": 150,
     "m2Type": "construido",
     "desc": "Remodelación de clientes para casa importante",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Costas",
@@ -74,12 +74,12 @@
     "m2": 230,
     "m2Type": "construido",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Bellavista I",
-    "folder": "Bellavista_I",
+    "folder": "Bellavista I",
     "year": "2022",
     "area": "Bella Vista",
     "lat": -34.55792182069736,
@@ -87,8 +87,8 @@
     "m2": 180,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Davison",
@@ -100,8 +100,8 @@
     "m2": 40,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Estrada",
@@ -113,8 +113,8 @@
     "m2": 310,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Anasagasti",
@@ -126,12 +126,12 @@
     "m2": 64,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Barca Renders",
-    "folder": "Barca_Renders",
+    "folder": "Barca Renders",
     "year": "2023",
     "area": "Barcelona",
     "lat": 41.405992,
@@ -139,12 +139,12 @@
     "m2": 0,
     "m2Type": "refaccionado",
     "desc": "Visualización arquitectónica.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Apart Hotel",
-    "folder": "Apart_Hotel",
+    "folder": "Apart Hotel",
     "year": "2023",
     "area": "San Jose, Santo Domingo",
     "lat": 9.989181,
@@ -152,12 +152,12 @@
     "m2": 420,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Conjunto de Viviendas",
-    "folder": "Conjunto_de_Viviendas",
+    "folder": "Conjunto de Viviendas",
     "year": "2023",
     "area": "San Jose, Santo Domingo",
     "lat": 9.979592,
@@ -165,8 +165,8 @@
     "m2": 560,
     "m2Type": "refaccionado",
     "desc": "Proyecto de viviendas múltiples.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Pavlovsky",
@@ -178,8 +178,8 @@
     "m2": 32,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Pommer",
@@ -191,8 +191,8 @@
     "m2": 72,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Shap",
@@ -204,12 +204,12 @@
     "m2": 180,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Vestuario Shap",
-    "folder": "Vestuario_Shap",
+    "folder": "Vestuario Shap",
     "year": "2023",
     "area": "Nordelta",
     "lat": -34.42766255146959,
@@ -217,8 +217,8 @@
     "m2": 15,
     "m2Type": "construido",
     "desc": "Refacción de núcleo húmedo.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Arenales",
@@ -230,8 +230,8 @@
     "m2": 62,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Arredondo",
@@ -243,8 +243,8 @@
     "m2": 46,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Azurduy",
@@ -256,8 +256,8 @@
     "m2": 95,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Cerrito",
@@ -269,8 +269,8 @@
     "m2": 76,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Chacabuco",
@@ -282,8 +282,8 @@
     "m2": 18,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "French",
@@ -295,12 +295,12 @@
     "m2": 51,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Haras del Sol",
-    "folder": "Haras_del_Sol",
+    "folder": "Haras del Sol",
     "year": "2024",
     "area": "Pilar",
     "lat": -34.52935411782006,
@@ -308,12 +308,12 @@
     "m2": 48,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "La Lomada",
-    "folder": "La_Lomada",
+    "folder": "La Lomada",
     "year": "2024",
     "area": "Pilar",
     "lat": -34.430049962351235,
@@ -321,8 +321,8 @@
     "m2": 62,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Pueyrredon",
@@ -334,12 +334,12 @@
     "m2": 75,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Rincon de la Costa",
-    "folder": "Rincon_de_la_Costa",
+    "folder": "Rincon de la Costa",
     "year": "2024",
     "area": "Tigre",
     "lat": -34.410870341793794,
@@ -347,12 +347,12 @@
     "m2": 44,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Santo Domingo",
-    "folder": "Santo_Domingo",
+    "folder": "Santo Domingo",
     "year": "2024",
     "area": "Martinez",
     "lat": -34.498013868848645,
@@ -360,8 +360,8 @@
     "m2": 78,
     "m2Type": "refaccionado",
     "desc": "Sede del Estudio.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Azcuenaga",
@@ -373,12 +373,12 @@
     "m2": 58,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Delta de Tigre",
-    "folder": "Delta_de_Tigre",
+    "folder": "Delta de Tigre",
     "year": "2025",
     "area": "Delta",
     "lat": -34.245509998277704,
@@ -386,8 +386,8 @@
     "m2": 67,
     "m2Type": "construido",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Florida",
@@ -399,8 +399,8 @@
     "m2": 142,
     "m2Type": "construido",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Miranda",
@@ -412,8 +412,8 @@
     "m2": 110,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Nicaragua",
@@ -425,8 +425,8 @@
     "m2": 46,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Line",
@@ -438,8 +438,8 @@
     "m2": 100,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Savio",
@@ -451,8 +451,8 @@
     "m2": 105,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Zapiola",
@@ -464,12 +464,12 @@
     "m2": 55,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Blanco Encalada",
-    "folder": "Blanco_Encalada",
+    "folder": "Blanco Encalada",
     "year": "2026",
     "area": "Belgrano",
     "lat": -34.563242,
@@ -477,12 +477,12 @@
     "m2": 58,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "La Delfina",
-    "folder": "La_Delfina",
+    "folder": "La Delfina",
     "year": "2026",
     "area": "Pilar",
     "lat": -34.455984,
@@ -490,12 +490,12 @@
     "m2": 30,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Los Sauces",
-    "folder": "Los_Sauces",
+    "folder": "Los Sauces",
     "year": "2026",
     "area": "Nordelta",
     "lat": -34.403759,
@@ -503,8 +503,8 @@
     "m2": 7,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Villanueva",
@@ -516,8 +516,8 @@
     "m2": 100,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Posadas",
@@ -529,8 +529,8 @@
     "m2": 140,
     "m2Type": "construido",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   },
   {
     "title": "Aristobulo",
@@ -542,7 +542,7 @@
     "m2": 95,
     "m2Type": "refaccionado",
     "desc": "Refacción integral de vivienda.",
-    "imgCount": 0,
-    "imgExt": "jpeg"
+    "imgCount": 3,
+    "imgExt": "jpg"
   }
 ]
