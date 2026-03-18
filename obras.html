@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Cúpula | Gestión & Auditoría de Obra</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root { 
+            --accent: #800020; 
+            --dark: #121212;
+            --border: rgba(0,0,0,0.08);
+            --glass: rgba(255, 255, 255, 0.4);
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; color: var(--dark); margin: 0; background: #fff; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .nav-back { 
+            position: fixed; top: 40px; left: 40px; z-index: 100;
+            background: var(--glass); backdrop-filter: blur(6px);
+            padding: 10px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.2);
+        }
+        .nav-back a { color: #000; text-decoration: none; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+
+        .hero { 
+            height: 60vh; display: flex; align-items: center; padding: 0 10%; 
+            background: #f9f9f9; border-bottom: 1px solid var(--border);
+        }
+        .hero-content { max-width: 850px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin: 0; }
+        .hero p { margin-top: 25px; font-weight: 200; font-size: 1.1rem; line-height: 1.8; color: #444; }
+
+        .container { padding: 80px 10%; max-width: 1400px; margin: 0 auto; }
+
+        .integrated-section {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; margin-bottom: 120px; align-items: start;
+        }
+        
+        .integrated-section.reverse { direction: rtl; }
+        .integrated-section.reverse .text-block, .integrated-section.reverse .visual-block { direction: ltr; }
+
+        .text-block h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px; line-height: 1.2; }
+        .text-block p { font-weight: 300; line-height: 1.7; color: #555; margin-bottom: 15px; }
+        .text-block strong { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
+
+        .visual-block {
+            background: var(--glass); backdrop-filter: blur(10px);
+            padding: 35px; border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.03); border: 1px solid rgba(255,255,255,0.3);
+        }
+        .visual-block h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin: 0 0 25px; text-align: center; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+
+        .cert-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .cert-table th { text-align: left; padding: 10px 5px; text-transform: uppercase; letter-spacing: 1px; color: #999; border-bottom: 1px solid var(--dark); }
+        .cert-table td { padding: 10px 5px; border-bottom: 1px solid var(--border); }
+        .badge { padding: 2px 6px; border-radius: 3px; font-size: 9px; font-weight: 600; background: #eee; }
+
+        .chart-holder { position: relative; height: 350px; width: 100%; }
+        
+        @media (max-width: 1024px) {
+            .integrated-section { grid-template-columns: 1fr; gap: 40px; }
+            .integrated-section.reverse { direction: ltr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-back">
+        <a href="index.html"><span>&#8212;</span> Volver al mapa</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <strong>Estructura de Control</strong>
+            <h1>Transparencia total en el flujo de su inversión.</h1>
+            <p>Nuestra metodología de gestión técnica permite que cada recurso destinado a la obra sea auditado y reportado con precisión quirúrgica, asegurando la trazabilidad de su capital en cada etapa del proyecto.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="integrated-section">
+            <div class="text-block">
+                <h2>Análisis Multirrubro de Costos</h2>
+                <p>El control eficiente comienza con la clasificación. Desglosamos la inversión total en cada una de las especialidades que intervienen en la construcción.</p>
+                <p>Este informe detallado permite al cliente comprender el peso relativo de cada rubro, desde la infraestructura básica hasta los acabados de alta gama, facilitando una gestión presupuestaria sin desviaciones.</p>
+            </div>
+            <div class="visual-block">
+                <h3>Distribución General por Rubros</h3>
+                <div class="chart-holder">
+                    <canvas id="detailedCostChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="integrated-section reverse">
+            <div class="text-block">
+                <h2>Certificación por Avance Real</h2>
+                <p>Implementamos un sistema de auditoría semanal donde solo se autoriza el pago por tareas efectivamente ejecutadas en sitio.</p>
+                <p>A través de nuestros certificados, usted visualiza el progreso técnico de cada contratista, garantizando que el flujo financiero sea un reflejo fiel de la realidad constructiva de la obra.</p>
+            </div>
+            <div class="visual-block">
+                <h3>Resumen de Certificados Técnicos</h3>
+                <table class="cert-table">
+                    <thead>
+                        <tr>
+                            <th>Tarea Principal</th>
+                            <th>Inversión Est.</th>
+                            <th>Avance</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Demolición y Preliminares</td><td>$300.000</td><td>100%</td><td><span class="badge" style="background:#e0f2f1; color:#00695c;">Saldado</span></td></tr>
+                        <tr><td>Albañilería de Elevación</td><td>$300.000</td><td>100%</td><td><span class="badge" style="background:#e0f2f1; color:#00695c;">Saldado</span></td></tr>
+                        <tr><td>Instalación Eléctrica</td><td>$450.000</td><td>80%</td><td><span class="badge" style="background:#fff3e0; color:#ef6c00;">En Proceso</span></td></tr>
+                        <tr><td>Plomería e Instalaciones</td><td>$800.000</td><td>80%</td><td><span class="badge" style="background:#fff3e0; color:#ef6c00;">En Proceso</span></td></tr>
+                        <tr><td>Pintura e Interiores</td><td>$500.000</td><td>30%</td><td><span class="badge">Iniciado</span></td></tr>
+                        <tr><td>Limpieza Final</td><td>$200.000</td><td>0%</td><td><span class="badge">Pendiente</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="integrated-section">
+            <div class="text-block">
+                <h2>Proyección Financiera y Desembolsos</h2>
+                <p>La previsibilidad es el eje de nuestra administración. No solo reportamos lo gastado, sino que proyectamos el costo final de la obra basándonos en las variables de mercado y el avance real.</p>
+                <p>Este análisis comparativo le permite observar el historial de desembolsos mensuales y el saldo pendiente para la finalización total, manteniendo un equilibrio constante entre el presupuesto original y la ejecución final.</p>
+            </div>
+            <div class="visual-block">
+                <h3>Estado Financiero Consolidado</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; margin-bottom: 30px;">
+                    <div>
+                        <div style="font-size: 9px; color: #999; text-transform: uppercase; letter-spacing: 1px;">Inversión Proyectada</div>
+                        <div style="font-size: 18px; font-weight: 600; margin-top: 5px;">$15.200 <small style="font-size: 10px; font-weight: 200;">USD</small></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 9px; color: #999; text-transform: uppercase; letter-spacing: 1px;">Gasto Acumulado</div>
+                        <div style="font-size: 18px; font-weight: 600; margin-top: 5px; color: var(--accent);">$14.558 <small style="font-size: 10px; font-weight: 200;">USD</small></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 9px; color: #999; text-transform: uppercase; letter-spacing: 1px;">Saldo a Pagar</div>
+                        <div style="font-size: 18px; font-weight: 600; margin-top: 5px;">$642 <small style="font-size: 10px; font-weight: 200;">USD</small></div>
+                    </div>
+                </div>
+                <div class="chart-holder" style="height: 200px;">
+                    <canvas id="monthlyPaymentsChart"></canvas>
+                </div>
+                <div style="margin-top: 15px; text-align: center; font-size: 10px; color: #bbb; letter-spacing: 1px; text-transform: uppercase;">Historial de Desembolsos Mensuales</div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const commonOptions = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } };
+
+        // Gráfico de Torta Complejo por Rubros
+        const ctxDetailed = document.getElementById('detailedCostChart').getContext('2d');
+        new Chart(ctxDetailed, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Albañilería (M.O)', 'Sanitarios/Plomería', 'Carpintería', 'Mármoles', 
+                    'Pintura', 'Iluminación', 'Paisajismo', 'Otros Rubros'
+                ],
+                datasets: [{
+                    data: [20.2, 16.5, 24.1, 12.8, 7.4, 4.3, 5.2, 9.5],
+                    backgroundColor: ['#800020', '#9a2a3e', '#b3515f', '#cc7981', '#e5a1a4', '#f2c8c9', '#dcdcdc', '#eeeeee'],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            },
+            options: { ...commonOptions, cutout: '70%', plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 10, weight: 300 }, padding: 15 } } } }
+        });
+
+        // Gráfico de Barras: Historial de Desembolsos Mensuales (Ejemplo)
+        const ctxMonthly = document.getElementById('monthlyPaymentsChart').getContext('2d');
+        new Chart(ctxMonthly, {
+            type: 'bar',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+                datasets: [{
+                    label: 'Pagos Totales (USD)',
+                    data: [2800, 3100, 2400, 3500, 2758],
+                    backgroundColor: '#800020',
+                    borderRadius: 3
+                }]
+            },
+            options: { 
+                ...commonOptions,
+                scales: {
+                    y: { display: false },
+                    x: { grid: { display: false }, ticks: { font: { size: 9 } } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

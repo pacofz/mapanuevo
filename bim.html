@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Cúpula | BIM & Documentación</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --accent: #800020; 
+            --dark: #121212;
+            --soft-gray: #f9f9f9;
+            --border: rgba(0,0,0,0.08);
+            --glass: rgba(255, 255, 255, 0.2);
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: var(--dark); 
+            margin: 0; 
+            background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Navegación (Coherente con estudio.html) */
+        .nav-back { 
+            position: fixed; top: 40px; left: 40px; z-index: 100;
+            background: rgba(255,255,255,0.6);
+            padding: 10px 20px; border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+        }
+        .nav-back a { 
+            color: #000 !important; text-decoration: none; 
+            font-size: 10px; letter-spacing: 3px; 
+            text-transform: uppercase; font-weight: 600;
+            display: flex; align-items: center; gap: 15px;
+        }
+
+        /* Hero Section */
+        .hero { 
+            height: 70vh; display: flex; align-items: center; 
+            padding: 0 10%; background: var(--soft-gray);
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-content { max-width: 900px; }
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); 
+            line-height: 1.1; margin: 0; font-weight: 600;
+        }
+        .hero .subtitle { 
+            margin-bottom: 20px; font-size: 12px; letter-spacing: 6px; 
+            text-transform: uppercase; color: var(--accent); font-weight: 600;
+        }
+
+        /* Contenedor Principal */
+        .container { padding: 100px 10%; max-width: 1400px; margin: 0 auto; }
+
+        /* Grid de Beneficios */
+        .section-title {
+            font-family: 'Playfair Display', serif; font-size: 2.5rem;
+            margin-bottom: 60px; border-left: 3px solid var(--accent); padding-left: 30px;
+        }
+
+        .bim-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 120px;
+            align-items: center;
+        }
+
+        /* Placeholders para Imágenes */
+        .image-placeholder {
+            width: 100%; aspect-ratio: 16/9;
+            background: #eee; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            border: 1px dashed #ccc;
+        }
+        .image-placeholder::after {
+            content: 'Espacio para Infografía / Render Técnico';
+            font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #999;
+        }
+
+        /* Cards de Metodología */
+        .method-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .method-card {
+            padding: 40px; border: 1px solid var(--border);
+            transition: all 0.4s ease;
+        }
+        .method-card:hover { background: var(--soft-gray); border-color: var(--accent); transform: translateY(-5px); }
+        .method-card i { font-size: 2rem; color: var(--accent); margin-bottom: 25px; display: block; }
+        .method-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 15px; }
+        .method-card p { font-size: 14px; line-height: 1.6; font-weight: 300; color: #555; }
+
+        /* Texto Destacado */
+        .highlight-text {
+            font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic;
+            text-align: center; max-width: 900px; margin: 120px auto; line-height: 1.4;
+        }
+
+        footer { padding: 60px 10%; font-size: 9px; letter-spacing: 3px; color: #ccc; text-transform: uppercase; text-align: center; }
+
+        @media (max-width: 900px) {
+            .nav-back { top: 20px; left: 20px; }
+            .bim-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero { height: 60vh; padding: 0 5%; }
+            .container { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-back">
+        <a href="index.html"><span>&#8212;</span> Volver al mapa</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="subtitle">Tecnología Aplicada</div>
+            <h1>BIM: Construir antes de construir.</h1>
+            <p style="margin-top: 30px; font-weight: 200; max-width: 600px; line-height: 1.8;">
+                En Estudio Cúpula no solo dibujamos planos; gestionamos bases de datos gráficas que nos permiten prever conflictos y optimizar cada centavo de tu inversión.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="bim-grid">
+            <div>
+                <h2 class="section-title">¿Qué es el Modelado Inteligente?</h2>
+                <p><strong>Building Information Modeling (BIM)</strong> es una metodología de trabajo colaborativa para la creación y gestión de un proyecto de construcción.</p>
+                <p>A diferencia del CAD tradicional (líneas en 2D), en BIM trabajamos con <strong>objetos inteligentes</strong>: muros que conocen su materialidad, ventanas que saben su costo y estructuras que calculan su propio volumen.</p>
+                <p style="color: var(--accent); font-weight: 600;">Esto nos permite detectar interferencias entre cañerías y vigas meses antes de que la cuadrilla llegue a la obra.</p>
+            </div>
+            <div class="image-placeholder"></div>
+        </div>
+
+        <h2 class="section-title" style="text-align: center; border-left: none; padding: 0;">Beneficios para el Cliente</h2>
+        <div class="method-grid">
+            <div class="method-card">
+                <i class="fa-solid fa-calculator"></i>
+                <h3>Presupuestos Precisos</h3>
+                <p>Extraemos cómputos de materiales directamente del modelo 3D. Esto elimina el error humano y nos permite darte un costo real de obra desde etapas tempranas.</p>
+            </div>
+            <div class="method-card">
+                <i class="fa-solid fa-clock"></i>
+                <h3>Reducción de Plazos</h3>
+                <p>Al resolver los detalles constructivos en el entorno digital, evitamos las improvisaciones y "parates" en el sitio de construcción por falta de definición técnica.</p>
+            </div>
+            <div class="method-card">
+                <i class="fa-solid fa-vr-cardboard"></i>
+                <h3>Visualización Total</h3>
+                <p>Podrás recorrer tu casa de manera virtual antes de colocar el primer ladrillo, entendiendo las proporciones y la luz natural de cada espacio.</p>
+            </div>
+        </div>
+
+        <div class="highlight-text">
+            "La documentación técnica de alta calidad no es un gasto, es el seguro de vida de tu patrimonio durante la construcción."
+        </div>
+
+        <div class="bim-grid">
+            <div class="image-placeholder" style="aspect-ratio: 1/1;"></div>
+            <div>
+                <h2 class="section-title">Estándares de Documentación</h2>
+                <p>Utilizamos <strong>Graphisoft Archicad</strong> como motor principal de diseño, permitiendo una transición fluida entre el croquis preliminar y los planos municipales o de detalle.</p>
+                <p>Nuestra documentación incluye:</p>
+                <ul style="font-weight: 300; line-height: 2; font-size: 14px;">
+                    <li>Pliegos detallados de instalaciones.</li>
+                    <li>Planillas de carpinterías automatizadas.</li>
+                    <li>Detalles constructivos en 3D para gremios.</li>
+                    <li>Seguimiento de avance de obra vinculado al modelo.</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        Estudio Cúpula &copy; 2026 — BIM & Management Técnico
+    </footer>
+
+</body>
+</html>
