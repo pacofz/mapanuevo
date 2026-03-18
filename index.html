@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Cupula | Archivo Dinámico</title>
+    <title>Estudio Cúpula | Archivo Dinámico</title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home_pin" />
 
     <style>
@@ -34,87 +33,56 @@
         .dropdown-menu {
             position: absolute; top: 100%; right: 0; 
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            display: none; z-index: 1001;
+            backdrop-filter: blur(15px); border: 1px solid rgba(0,0,0,0.05); border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); display: none; z-index: 1001;
             padding: 15px; animation: fadeIn 0.3s ease; box-sizing: border-box;
         }
         .dropdown-menu.active { display: block; }
 
         #m2-menu { min-width: 200px; }
-        #proyectos-menu { min-width: 320px; max-height: 400px; overflow-y: auto; text-align: left; }
-
-        .proyecto-item { 
-            display: flex; justify-content: space-between; padding: 10px 8px; 
-            border-bottom: 1px solid rgba(0,0,0,0.03); cursor: pointer; gap: 15px; 
-            transition: background 0.2s ease, padding-left 0.2s ease;
-            border-radius: 4px;
-        }
-        .proyecto-item:hover { background: rgba(128, 0, 32, 0.05); padding-left: 12px; }
         .m2-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(0,0,0,0.03); padding-bottom: 6px; }
         .m2-row span:last-child { font-weight: 500; color: var(--accent-bordo); }
 
+        #proyectos-menu { min-width: 320px; max-height: 400px; overflow-y: auto; text-align: left; }
+        .proyecto-item { 
+            display: flex; justify-content: space-between; padding: 10px 8px; 
+            border-bottom: 1px solid rgba(0,0,0,0.03); cursor: pointer; gap: 15px; 
+            transition: background 0.2s ease; border-radius: 4px;
+        }
+        .proyecto-item:hover { background: rgba(128, 0, 32, 0.05); }
+
         #map { width: 100%; height: 100vh; background: #f8f8f8; }
 
+        /* Marcadores y Líneas */
         .marker-dot { width: 8px !important; height: 8px !important; background-color: var(--accent-bordo); border-radius: 50%; border: 1.5px solid #fff; }
         .marker-line { position: absolute; bottom: 4px; left: 50%; width: 1px; height: 35px; background: var(--accent-bordo); transform: translateX(-0.5px); opacity: 0; transition: opacity 0.3s ease; }
         
-        .marker-studio-home { 
-            width: 48px !important; height: 48px !important; 
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            color: var(--accent-bordo);
-        }
-        .marker-studio-home .material-symbols-outlined { font-size: 48px; font-variation-settings: 'wght' 400, 'opsz' 48; }
+        .marker-studio-home { width: 48px !important; height: 48px !important; display: flex; align-items: center; justify-content: center; color: var(--accent-bordo); cursor: pointer; }
+        .marker-studio-home .material-symbols-outlined { font-size: 48px; }
 
-        /* AJUSTE: Tooltips y líneas ocultos por defecto */
+        /* Tooltips con Anticolisión */
         .leaflet-tooltip-own { 
             background: transparent !important; border: none !important; box-shadow: none !important; 
             color: var(--text-color) !important; font-size: 10.5px; text-transform: uppercase; 
             padding: 0 !important; margin: 0 !important; line-height: 1 !important;
-            opacity: 0 !important; /* Oculto inicialmente */
-            transition: opacity 0.3s ease;
-            pointer-events: none !important;
+            opacity: 0 !important; transition: opacity 0.3s ease; pointer-events: none !important;
         }
         .tooltip-studio { font-weight: 600 !important; font-size: 13px !important; margin-top: -15px !important; opacity: 1 !important; pointer-events: auto !important; }
-        
-        /* Clase para mostrar cuando el zoom es correcto */
         .show-label { opacity: 1 !important; pointer-events: auto !important; }
+        .collision-hidden { opacity: 0 !important; }
 
-        .hide-on-zoom, .collision-hidden { opacity: 0 !important; pointer-events: none !important; }
-
-        .leaflet-popup-content-wrapper { 
-            background: rgba(255, 255, 255, 0.2) !important; 
-            backdrop-filter: blur(6px) !important; 
-            -webkit-backdrop-filter: blur(6px) !important;
-            border-radius: 20px !important; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important; 
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 0; overflow: hidden;
-        }
-        .leaflet-popup-tip-container { display: none !important; }
+        /* Popups y Carrusel */
+        .leaflet-popup-content-wrapper { background: rgba(255, 255, 255, 0.8) !important; backdrop-filter: blur(10px) !important; border-radius: 20px !important; overflow: hidden; padding: 0; }
         .leaflet-popup-content { margin: 0 !important; width: 390px !important; }
+        .carousel-container { position: relative; width: 100%; height: 250px; background: #000; overflow: hidden; }
+        .carousel-container img { width: 100%; height: 100%; object-fit: cover; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; padding: 10px; cursor: pointer; z-index: 10; }
 
         .studio-popup-menu { padding: 10px 0; display: flex; flex-direction: column; min-width: 260px; }
-        .studio-option { 
-            display: flex; justify-content: space-between; padding: 18px 25px; 
-            text-decoration: none; 
-            color: #000000 !important;
-            font-size: 13px; font-weight: 300; 
-            text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(0,0,0,0.04); 
-            transition: all 0.2s ease; 
-        }
-        .studio-option:hover { background: rgba(255,255,255,0.15); padding-left: 30px; color: var(--accent-bordo) !important; }
+        .studio-option { display: flex; justify-content: space-between; padding: 18px 25px; text-decoration: none; color: #000 !important; font-size: 12px; text-transform: uppercase; border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .studio-option:hover { background: rgba(128, 0, 32, 0.05); color: var(--accent-bordo) !important; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 600px) {
-            header { padding: 0 15px; }
-            .logo-header { font-size: 14px; }
-            .dropdown-menu { position: fixed; top: 70px; left: 10px !important; right: 10px !important; width: auto !important; max-width: calc(100vw - 20px); }
-            .leaflet-popup-content { width: 280px !important; }
-        }
     </style>
 </head>
 <body>
@@ -147,47 +115,41 @@
         let markersMap = {};
         let markerList = [];
 
+        window.changeSlide = function(folder, ext, total, direction, id) {
+            const imgElement = document.getElementById(`img-${id}`);
+            let current = parseInt(imgElement.dataset.index);
+            current += direction;
+            if (current > total) current = 1;
+            if (current < 1) current = total;
+            imgElement.src = `assets/images/${folder}/${current}.${ext}`;
+            imgElement.dataset.index = current;
+        };
+
         async function loadApp() {
             try {
                 const response = await fetch('proyectos.json');
                 allProjects = await response.json();
-                allProjects.sort((a, b) => a.title.localeCompare(b.title));
                 renderMap();
                 updateCounters();
                 renderProyectosList();
-            } catch (e) { console.error("Error cargando JSON:", e); }
-        }
-
-        function animateValue(obj, start, end, duration, isM2 = false) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const easeInProgress = progress * progress; 
-                const currentVal = Math.floor(easeInProgress * (end - start) + start);
-                obj.innerText = isM2 ? currentVal.toLocaleString() : currentVal;
-                if (progress < 1) window.requestAnimationFrame(step);
-                else obj.innerText = isM2 ? end.toLocaleString() : end;
-            };
-            window.requestAnimationFrame(step);
+            } catch (e) { console.error("Error:", e); }
         }
 
         function updateCounters() {
-            const parseM2 = (val) => parseFloat(val) || 0;
             const totalObras = allProjects.length;
-            const totalM2 = allProjects.reduce((acc, p) => acc + parseM2(p.m2), 0);
-            animateValue(document.getElementById('count-obras'), 0, totalObras, 4000);
-            animateValue(document.getElementById('count-m2'), 0, totalM2, 4000, true);
-            document.getElementById('m2-construido').innerText = allProjects.filter(p => p.m2Type === 'construido').reduce((acc, p) => acc + parseM2(p.m2), 0).toLocaleString() + ' m²';
-            document.getElementById('m2-refaccionado').innerText = allProjects.filter(p => p.m2Type === 'refaccionado').reduce((acc, p) => acc + parseM2(p.m2), 0).toLocaleString() + ' m²';
+            const totalM2 = allProjects.reduce((acc, p) => acc + (parseFloat(p.m2) || 0), 0);
+            document.getElementById('count-obras').innerText = totalObras;
+            document.getElementById('count-m2').innerText = totalM2.toLocaleString();
+            document.getElementById('m2-construido').innerText = allProjects.filter(p => p.m2Type === 'construido').reduce((acc, p) => acc + (parseFloat(p.m2) || 0), 0).toLocaleString() + ' m²';
+            document.getElementById('m2-refaccionado').innerText = allProjects.filter(p => p.m2Type === 'refaccionado').reduce((acc, p) => acc + (parseFloat(p.m2) || 0), 0).toLocaleString() + ' m²';
         }
 
         function renderProyectosList() {
             const container = document.getElementById('proyectos-menu');
             container.innerHTML = allProjects.map(p => `
                 <div class="proyecto-item" onclick="handleNavigation('${p.title}')">
-                    <span style="font-weight:400; text-transform:uppercase; font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title === "Santo Domingo" ? "Estudio Cúpula" : p.title}</span>
-                    <span style="color:#888; font-weight:200; font-size:11px;">${p.year}</span>
+                    <span style="text-transform:uppercase; font-size:11px;">${p.title === "Santo Domingo" ? "Estudio Cúpula" : p.title}</span>
+                    <span style="color:#888; font-size:11px;">${p.year}</span>
                 </div>
             `).join('');
         }
@@ -197,14 +159,11 @@
             if (marker) {
                 map.flyTo(marker.getLatLng(), 15);
                 setTimeout(() => marker.fire('click'), 400);
-                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('active'));
             }
         }
 
         function toggleMenu(id) {
-            document.querySelectorAll('.dropdown-menu').forEach(m => {
-                if(m.id !== id) m.classList.remove('active');
-            });
+            document.querySelectorAll('.dropdown-menu').forEach(m => { if(m.id !== id) m.classList.remove('active'); });
             document.getElementById(id).classList.toggle('active');
         }
 
@@ -219,14 +178,11 @@
                 const line = iconContainer ? iconContainer.querySelector('.marker-line') : null;
                 if (!tooltip || !tooltip._container) return;
 
-                // Reset inicial
                 tooltip._container.classList.remove('show-label', 'collision-hidden');
                 if (line) line.style.opacity = "0";
 
-                // Si el zoom es menor al umbral, no hacemos nada (quedan ocultos por el CSS base)
                 if (zoom < threshold) return;
 
-                // Lógica de colisión solo si pasamos el umbral de zoom
                 const rect = tooltip._container.getBoundingClientRect();
                 const overlaps = visibleRects.some(r => !(rect.right < r.left || rect.left > r.right || rect.bottom < r.top || rect.top > r.bottom));
 
@@ -244,10 +200,8 @@
             map = L.map('map', { center: [-34.48, -58.55], zoom: 11, zoomControl: false, attributionControl: false });
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png').addTo(map);
 
-            allProjects.forEach(project => {
-                if (!project.lat || !project.lng) return;
+            allProjects.forEach((project, idx) => {
                 const isStudio = project.title.toLowerCase() === "santo domingo";
-                
                 const customIcon = L.divIcon({
                     className: isStudio ? 'marker-studio-home' : 'marker-dot',
                     iconSize: isStudio ? [48, 48] : [8, 8],
@@ -256,50 +210,42 @@
                 });
 
                 const marker = L.marker([project.lat, project.lng], { icon: customIcon, isStudio: isStudio }).addTo(map);
-                const displayTitle = isStudio ? "ESTUDIO CÚPULA" : project.title;
-
-                marker.bindTooltip(displayTitle, { 
-                    permanent: true, direction: 'top', 
-                    className: isStudio ? 'leaflet-tooltip-own tooltip-studio' : 'leaflet-tooltip-own', 
-                    offset: isStudio ? [0, -25] : [0, -39]
+                marker.bindTooltip(isStudio ? "ESTUDIO CÚPULA" : project.title, { 
+                    permanent: true, direction: 'top', className: isStudio ? 'leaflet-tooltip-own tooltip-studio' : 'leaflet-tooltip-own', offset: isStudio ? [0, -25] : [0, -39]
                 });
 
                 marker.on('click', () => {
                     if (isStudio) {
-                        const studioMenuHtml = `
-                            <div class="studio-popup-menu">
-                                <a href="estudio.html" class="studio-option" style="font-weight:600;"><span>Estudio Cúpula</span></a>
-                                <a href="obras.html" class="studio-option"><span>Seguimiento de Obras</span></a>
-                                <a href="bim.html" class="studio-option"><span>BIM y Documentación</span></a>
-                            </div>`;
+                        const studioMenuHtml = `<div class="studio-popup-menu">
+                            <a href="estudio.html" class="studio-option" style="font-weight:600;"><span>Estudio Cúpula</span></a>
+                            <a href="obras.html" class="studio-option"><span>Seguimiento de Obras</span></a>
+                            <a href="bim.html" class="studio-option"><span>BIM y Documentación</span></a>
+                        </div>`;
                         L.popup({ offset: [0, -20], closeButton: false }).setLatLng(marker.getLatLng()).setContent(studioMenuHtml).openOn(map);
                     } else {
                         const popupHtml = `
-                            <div style="width:100%; height:250px; background:#000; overflow:hidden;"><img src="assets/images/${project.folder}/1.${project.imgExt}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://via.placeholder.com/400x250?text=Estudio+Cupula'"></div>
-                            <div style="padding:25px; background:transparent;">
-                                <h3 style="margin:0 0 8px 0; font-family:'Playfair Display',serif; font-size:20px;">${project.title}</h3>
-                                <p style="font-size:13px; margin:0; color:#444; line-height:1.5;">${project.desc}</p>
-                                <div style="margin-top:15px; font-size:10px; color:#888; text-transform:uppercase;">${project.year} • ${project.m2} m²</div>
+                            <div class="carousel-container">
+                                <button class="carousel-btn" style="left:0" onclick="changeSlide('${project.folder}', '${project.imgExt}', ${project.imgCount}, -1, ${idx})">‹</button>
+                                <img id="img-${idx}" data-index="1" src="assets/images/${project.folder}/1.${project.imgExt}" onerror="this.src='https://via.placeholder.com/400x250?text=Estudio+Cúpula'">
+                                <button class="carousel-btn" style="right:0" onclick="changeSlide('${project.folder}', '${project.imgExt}', ${project.imgCount}, 1, ${idx})">›</button>
+                            </div>
+                            <div style="padding:25px;">
+                                <h3 style="margin:0; font-family:'Playfair Display',serif; font-size:20px;">${project.title}</h3>
+                                <p style="font-size:13px; color:#444; margin:10px 0;">${project.desc}</p>
+                                <div style="font-size:10px; color:#888; text-transform:uppercase;">${project.year} • ${project.m2} m²</div>
                             </div>`;
-                        marker.bindPopup(popupHtml).openPopup();
+                        L.popup({ closeButton: false }).setLatLng(marker.getLatLng()).setContent(popupHtml).openOn(map);
                     }
                 });
-
                 markersMap[project.title] = marker;
                 markerList.push(marker);
             });
 
             map.on('zoomend move moveend', updateVisibility);
-            // Ejecutamos la visibilidad inmediatamente tras renderizar
             updateVisibility();
         }
 
-        window.onclick = (e) => {
-            if (!e.target.closest('.stat-item')) {
-                document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('active'));
-            }
-        };
-
+        window.onclick = (e) => { if (!e.target.closest('.stat-item')) document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('active')); };
         loadApp();
     </script>
 </body>
