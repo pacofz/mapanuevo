@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio Cúpula | Archivo Dinámico</title>
     
+    <link rel="icon" href="assets/images/logo.jpeg" type="image/png">
+    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +26,22 @@
             background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); 
             z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.03);
         }
-        .logo-header { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 1px; cursor: pointer; }
+        
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            mix-blend-mode: multiply;
+        }
+
+        .logo-header { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 1px; }
+        
         .stats { display: flex; gap: 40px; }
         
         .stat-item { text-align: center; cursor: pointer; position: relative; padding: 10px; border-radius: 8px; transition: all 0.3s ease; }
@@ -42,10 +59,29 @@
             z-index: 1001; padding: 15px; transition: all 0.3s ease; transform: translateY(-10px);
         }
         .dropdown-menu.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
-        #proyectos-menu { min-width: 320px; max-height: 400px; overflow-y: auto; text-align: left; }
         
-        .proyecto-item { display: flex; justify-content: space-between; padding: 10px 8px; border-bottom: 1px solid rgba(0,0,0,0.03); cursor: pointer; gap: 15px; border-radius: 4px; transition: background 0.2s; }
+        /* Ajuste específico solicitado para el menú de proyectos */
+        #proyectos-menu { 
+            min-width: 320px; 
+            max-width: 90vw; /* Evita que se salga de la pantalla en móviles */
+            max-height: 400px; 
+            overflow-y: auto; 
+            text-align: left; 
+        }
+        
+        .proyecto-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px 8px; 
+            border-bottom: 1px solid rgba(0,0,0,0.03); 
+            cursor: pointer; 
+            gap: 15px; 
+            border-radius: 4px; 
+            transition: background 0.2s; 
+        }
         .proyecto-item:hover { background: rgba(128, 0, 32, 0.05); color: var(--accent-bordo); }
+        .proyecto-item span:last-child { color: #ccc; font-size: 0.9em; flex-shrink: 0; }
 
         #map { width: 100%; height: 100vh; z-index: 1; }
         .marker-dot { width: 8px !important; height: 8px !important; background-color: var(--accent-bordo); border-radius: 50%; border: 1.5px solid #fff; }
@@ -86,12 +122,11 @@
         }
         .studio-option:hover { background: rgba(128, 0, 32, 0.05); color: var(--accent-bordo) !important; padding-left: 30px; }
 
-        /* MODAL CORREGIDO: SE AJUSTA ESTRICTAMENTE AL ANCHO DE LA IMAGEN */
         #project-modal {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
-            width: min-content; /* Fuerza al modal a medir lo que mide la imagen */
+            width: min-content; 
             max-width: 90vw;
-            background: transparent; /* Eliminamos fondo blanco de base */
+            background: transparent; 
             z-index: 2000;
             display: none; flex-direction: column; overflow: hidden;
             box-shadow: 0 30px 60px rgba(0,0,0,0.4);
@@ -131,12 +166,42 @@
         .modal-tags { display: flex; gap: 15px; font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
 
         #modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); z-index: 1999; display: none; }
+
+        /* --- NUEVAS REGLAS PARA RESPONSIVE MOVIL --- */
+        @media (max-width: 600px) {
+            header { padding: 0 15px; }
+            .logo-header { font-size: 16px; }
+            .stats { gap: 10px; }
+            .stat-item { padding: 5px; }
+            .stat-value { font-size: 14px; min-width: 60px; }
+            .stat-label { font-size: 8px; }
+
+            #proyectos-menu { 
+                min-width: 280px; 
+                right: -15px; /* Ajuste para que el menú no se desborde a la izquierda */
+            }
+            .proyecto-item {
+                gap: 10px;
+                padding: 12px 8px; /* Un poco más de espacio táctil */
+                font-size: 13px;
+            }
+            .proyecto-item span:first-child {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .studio-popup-menu { min-width: 260px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-header" onclick="map.flyTo([-34.48, -58.55], 11)">ESTUDIO CÚPULA</div>
+        <div class="brand-container" onclick="map.flyTo([-34.48, -58.55], 11)">
+            <img src="assets/images/logo.jpeg" alt="Logo Estudio Cúpula" class="logo-img">
+            <div class="logo-header">ESTUDIO CÚPULA</div>
+        </div>
         <div class="stats">
             <div class="stat-item" onclick="toggleMenu('proyectos-menu')">
                 <span class="stat-value" id="count-obras">0</span>
@@ -283,9 +348,7 @@
             const img = document.getElementById('modal-img');
             img.style.opacity = '0';
             img.src = `assets/images/${currentProject.folder}/${currentImgIdx}.${currentProject.imgExt}`;
-            img.onload = () => { 
-                img.style.opacity = '1'; 
-            };
+            img.onload = () => { img.style.opacity = '1'; };
         }
 
         function changeImage(dir) {
@@ -320,7 +383,7 @@
 
         function renderList() {
             const list = document.getElementById('proyectos-menu');
-            list.innerHTML = allProjects.map(p => `<div class="proyecto-item" onclick="handleNav('${p.title}')"><span>${p.title}</span><span style="color:#ccc">${p.year}</span></div>`).join('');
+            list.innerHTML = allProjects.map(p => `<div class="proyecto-item" onclick="handleNav('${p.title}')"><span>${p.title}</span><span>${p.year}</span></div>`).join('');
         }
 
         window.handleNav = (title) => {
