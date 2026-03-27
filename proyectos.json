@@ -21,7 +21,7 @@
     "lng": -58.69797407337805,
     "m2": 12,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Diseño y fabricación de un fogonero a medida, integrado al paisaje del jardín. Se utilizaron materiales resistentes a la intemperie para crear un punto de encuentro cálido y funcional al aire libre.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -34,7 +34,7 @@
     "lng": -58.657758013137354,
     "m2": 340,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Transformación total de una vivienda de gran escala. Se redistribuyeron los ambientes principales para mejorar la circulación y se actualizaron todos los revestimientos, priorizando una estética contemporánea y materiales nobles.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -47,7 +47,7 @@
     "lng": -58.66843079635279,
     "m2": 60,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Refacción focalizada en el área social y cocina. Se buscó integrar el interior con las vistas al lago mediante la apertura de vanos y el uso de una paleta de colores neutros que resaltan el entorno natural.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -60,7 +60,7 @@
     "lng": -58.90637140074247,
     "m2": 150,
     "m2Type": "construido",
-    "desc": "Remodelación de clientes para casa importante",
+    "desc": "Construcción de una vivienda unifamiliar desde cero. El proyecto destaca por su eficiencia espacial y el uso de ventanales que permiten una iluminación cenital constante en el área de doble altura.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -73,7 +73,7 @@
     "lng": -58.731396263884814,
     "m2": 230,
     "m2Type": "construido",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Obra nueva con un lenguaje arquitectónico moderno. La casa se organiza en torno a un patio central que brinda privacidad y ventilación natural a todos los dormitorios y áreas comunes.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -86,7 +86,7 @@
     "lng": -58.67061730704455,
     "m2": 180,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Intervención en una casa de estilo clásico. Se modernizaron los baños y la cocina, manteniendo los detalles originales de la carpintería pero incorporando tecnología y confort actual.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -99,7 +99,7 @@
     "lng": -58.61762299863481,
     "m2": 40,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Remodelación de la zona de quincho y galería. Se incorporó una nueva parrilla de acero inoxidable y un sistema de cerramiento plegable para utilizar el espacio durante todo el año.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -112,7 +112,7 @@
     "lng": -58.49588667364187,
     "m2": 310,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Actualización integral de una residencia de época. Se reforzó la estructura y se renovaron por completo las instalaciones eléctricas y sanitarias, culminando con una estética minimalista.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -125,7 +125,7 @@
     "lng": -58.4117891221764,
     "m2": 64,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Refacción de un departamento antiguo. Se eliminaron paredes divisorias para crear un 'loft' integrado, optimizando cada metro cuadrado con mobiliario diseñado a medida.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -138,7 +138,7 @@
     "lng": 2.170128,
     "m2": 0,
     "m2Type": "refaccionado",
-    "desc": "Visualización arquitectónica.",
+    "desc": "Serie de visualizaciones 3D fotorrealistas para un proyecto residencial en España. Se trabajó detalladamente en la iluminación natural y la textura de los materiales propuestos.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -151,7 +151,7 @@
     "lng": -84.060831,
     "m2": 420,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Proyecto de reforma para complejo turístico. Se unificó la estética de las unidades y se diseñaron áreas comunes funcionales que responden a las necesidades del viajero moderno.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -164,7 +164,7 @@
     "lng": -84.082324,
     "m2": 560,
     "m2Type": "refaccionado",
-    "desc": "Proyecto de viviendas múltiples.",
+    "desc": "Intervención en un bloque residencial para mejorar su eficiencia energética. Se trabajó en la fachada, el aislamiento térmico y la renovación de las áreas de acceso común.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -177,7 +177,7 @@
     "lng": -58.62993427909247,
     "m2": 32,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Renovación de suite principal y vestidor. Se utilizó madera natural y una iluminación cálida para crear un ambiente de descanso sofisticado y confortable.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -190,7 +190,7 @@
     "lng": -58.69604117557161,
     "m2": 72,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Ampliación de vivienda existente. Se sumó un volumen nuevo que alberga un estudio y un área de relax, manteniendo la coherencia visual con la construcción original.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -203,7 +203,7 @@
     "lng": -58.93036735395724,
     "m2": 180,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Remodelación de oficinas corporativas. El diseño fomenta el trabajo colaborativo mediante espacios abiertos y el uso de colores que refuerzan la identidad visual de la empresa.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -216,7 +216,7 @@
     "lng": -58.63455322909472,
     "m2": 15,
     "m2Type": "construido",
-    "desc": "Refacción de núcleo húmedo.",
+    "desc": "Diseño y ejecución de núcleos húmedos de alta resistencia. Se priorizó la facilidad de mantenimiento y la durabilidad de los materiales ante un uso intensivo.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -229,7 +229,7 @@
     "lng": -58.49949397909199,
     "m2": 62,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Puesta en valor de una unidad residencial. Se restauraron los pisos originales y se modernizó la cocina con un diseño funcional y materiales de última generación.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -242,7 +242,7 @@
     "lng": -58.452325379093834,
     "m2": 46,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Reforma estética en zona de dormitorios. Se trabajó en la carpintería y el diseño de iluminación para maximizar la sensación de amplitud en espacios reducidos.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -255,7 +255,7 @@
     "lng": -58.46473857909419,
     "m2": 95,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Integración de balcón terraza al área de estar. Se instaló un sistema de vidriado móvil que permite el uso del espacio exterior durante todo el año, mejorando la habitabilidad.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -268,7 +268,7 @@
     "lng": -58.38268157143419,
     "m2": 76,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Refacción de vivienda con toques de lujo. Se utilizaron mármoles y maderas nobles en baños y accesos, logrando una estética atemporal y distinguida.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -281,7 +281,7 @@
     "lng": -58.50568858681577,
     "m2": 18,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Transformación de un sótano en sala de juegos y cine. Se realizó un trabajo exhaustivo de impermeabilización y acondicionamiento acústico.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -294,7 +294,7 @@
     "lng": -58.40671747909341,
     "m2": 51,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Reforma integral en departamento de soltero. El diseño prioriza la funcionalidad y la integración de la cocina con el living a través de una barra desayunadora.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -307,7 +307,7 @@
     "lng": -58.88039014522434,
     "m2": 48,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Intervención en casa de fin de semana. Se mejoró la conexión con la piscina y se renovó el área de parrilla con materiales de bajo mantenimiento.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -320,7 +320,7 @@
     "lng": -58.81608757909121,
     "m2": 62,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Remodelación de zona exterior y solarium. Se incorporaron decks de madera y se rediseñó el paisajismo para mayor privacidad.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -333,7 +333,7 @@
     "lng": -58.39873727909344,
     "m2": 75,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Refacción de vivienda de estilo francés. Se restauraron las molduras de yeso y el parquet, integrando sistemas de climatización modernos sin alterar la estética original.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -346,7 +346,7 @@
     "lng": -58.616328679090945,
     "m2": 44,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Proyecto de modernización para vivienda unifamiliar. Se cambiaron todas las aberturas por perfiles de PVC con doble vidriado térmico.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -359,7 +359,7 @@
     "lng": -58.53517579068588,
     "m2": 78,
     "m2Type": "refaccionado",
-    "desc": "Sede del Estudio.",
+    "desc": "Diseño y armado de la nueva sede del estudio. Un espacio de trabajo que funciona como showroom de soluciones arquitectónicas y materiales.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -372,7 +372,7 @@
     "lng": -58.39793378684842,
     "m2": 58,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Reforma de baño y cocina con enfoque en la eficiencia. Se instalaron griferías de bajo consumo y un sistema de iluminación LED automatizado.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -385,7 +385,7 @@
     "lng": -58.48501958615764,
     "m2": 67,
     "m2Type": "construido",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Construcción de una vivienda palafítica en zona de islas. Se utilizó una estructura mixta de acero y madera tratada para resistir las crecidas del río.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -398,7 +398,7 @@
     "lng": -58.493376670998465,
     "m2": 142,
     "m2Type": "construido",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Vivienda moderna desarrollada en dos plantas. Destaca por su fachada de hormigón visto y el uso de patios internos que garantizan luz natural en todo el recorrido.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -411,7 +411,7 @@
     "lng": -58.47565963703898,
     "m2": 110,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Actualización de una PH de pasillo. Se transformó el patio en un jardín de invierno y se renovaron los dormitorios con entrepisos de madera.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -424,7 +424,7 @@
     "lng": -58.43372267909587,
     "m2": 46,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Reforma cosmética express para alquiler temporario. Se trabajó en la pintura, iluminación y amoblamiento para elevar el perfil de la propiedad.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -437,7 +437,7 @@
     "lng": -58.5479,
     "m2": 100,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Transformación de un local comercial en vivienda. Se priorizó la entrada de luz desde el frente y se diseñó un mobiliario divisorio que no bloquea la vista.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -450,7 +450,7 @@
     "lng": -58.548454,
     "m2": 105,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Intervención en vivienda de los años 70. Se removieron cielorrasos para ganar altura y se reemplazaron las instalaciones por sistemas modernos.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -463,7 +463,7 @@
     "lng": -58.460521,
     "m2": 55,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Optimización de espacio en departamento de 2 ambientes. Se incorporó una isla de cocina que funciona como mesa de comedor y área de trabajo.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -476,7 +476,7 @@
     "lng": -58.466353,
     "m2": 58,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Remodelación total de cocina y lavadero. Se utilizó silestone y mobiliario de alta gama para una estética limpia y funcional.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -489,7 +489,7 @@
     "lng": -58.869117,
     "m2": 30,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Construcción de un espacio de home office independiente en el jardín. Totalmente equipado con tecnología y climatización propia.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -502,7 +502,7 @@
     "lng": -58.660157,
     "m2": 7,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Rediseño de toilette de recepción. Una intervención de alto impacto visual mediante el uso de papeles decorativos y luminarias de diseño.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -515,7 +515,7 @@
     "lng": -58.442596,
     "m2": 100,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Ampliación de terraza con construcción de quincho liviano. Se utilizó estructura metálica y carpintería de aluminio de alta prestación.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -528,7 +528,7 @@
     "lng": -58.553518,
     "m2": 140,
     "m2Type": "construido",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Obra nueva de carácter sustentable. Se incorporaron paneles solares y un sistema de recuperación de agua de lluvia para riego.",
     "imgCount": 3,
     "imgExt": "webp"
   },
@@ -541,7 +541,7 @@
     "lng": -58.499349,
     "m2": 95,
     "m2Type": "refaccionado",
-    "desc": "Refacción integral de vivienda.",
+    "desc": "Puesta en valor de fachada y exteriores. Se renovó el revestimiento plástico y se diseñó un nuevo esquema de iluminación perimetral.",
     "imgCount": 3,
     "imgExt": "webp"
   }
