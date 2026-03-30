@@ -60,10 +60,9 @@
         }
         .dropdown-menu.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
         
-        /* Ajuste específico solicitado para el menú de proyectos */
         #proyectos-menu { 
             min-width: 320px; 
-            max-width: 90vw; /* Evita que se salga de la pantalla en móviles */
+            max-width: 90vw; 
             max-height: 400px; 
             overflow-y: auto; 
             text-align: left; 
@@ -94,7 +93,19 @@
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 40;
         }
 
-        .leaflet-tooltip-own { background: transparent !important; border: none !important; box-shadow: none !important; color: var(--text-color) !important; font-size: 10.5px; text-transform: uppercase; padding: 0 !important; opacity: 0 !important; transition: opacity 0.3s ease; }
+        .leaflet-tooltip-own { 
+            background: transparent !important; 
+            border: none !important; 
+            box-shadow: none !important; 
+            color: var(--text-color) !important; 
+            font-size: 10.5px; 
+            text-transform: uppercase; 
+            padding: 0 !important; 
+            opacity: 0 !important; 
+            transition: opacity 0.3s ease;
+            cursor: pointer !important; /* Indica que es cliqueable */
+            pointer-events: auto !important; /* Habilita interacción */
+        }
         .leaflet-tooltip-own::before { display: none !important; }
 
         .tooltip-studio { 
@@ -107,7 +118,7 @@
         }
         
         .show-label { opacity: 1 !important; }
-        .collision-hidden { opacity: 0 !important; }
+        .collision-hidden { opacity: 0 !important; pointer-events: none !important; }
 
         .leaflet-popup-content-wrapper { background: rgba(255,255,255,0.9) !important; backdrop-filter: blur(10px); border-radius: 15px !important; padding: 0 !important; overflow: hidden; }
         .leaflet-popup-content { margin: 0 !important; }
@@ -167,7 +178,6 @@
 
         #modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); z-index: 1999; display: none; }
 
-        /* --- NUEVAS REGLAS PARA RESPONSIVE MOVIL --- */
         @media (max-width: 600px) {
             header { padding: 0 15px; }
             .logo-header { font-size: 16px; }
@@ -178,11 +188,11 @@
 
             #proyectos-menu { 
                 min-width: 280px; 
-                right: -15px; /* Ajuste para que el menú no se desborde a la izquierda */
+                right: -15px;
             }
             .proyecto-item {
                 gap: 10px;
-                padding: 12px 8px; /* Un poco más de espacio táctil */
+                padding: 12px 8px;
                 font-size: 13px;
             }
             .proyecto-item span:first-child {
@@ -290,11 +300,20 @@
                 });
 
                 const m = L.marker([p.lat, p.lng], { icon, isStudio }).addTo(map);
-                m.bindTooltip(isStudio ? "ESTUDIO CÚPULA" : p.title, { 
-                    permanent: true, direction: 'top', className: isStudio ? 'leaflet-tooltip-own tooltip-studio' : 'leaflet-tooltip-own', offset: isStudio ? [0, -25] : [0, -39]
-                });
+                
+                // TOOLTIP CONFIG: Se añade interactive: true para que detecte el clic
+                const tooltip = L.tooltip({ 
+                    permanent: true, 
+                    direction: 'top', 
+                    className: isStudio ? 'leaflet-tooltip-own tooltip-studio' : 'leaflet-tooltip-own', 
+                    offset: isStudio ? [0, -25] : [0, -39],
+                    interactive: true 
+                }).setContent(isStudio ? "ESTUDIO CÚPULA" : p.title);
+                
+                m.bindTooltip(tooltip);
 
-                m.on('click', () => {
+                // Función unificada de clic
+                const handleProjectClick = () => {
                     map.flyTo(m.getLatLng(), 15);
                     if (isStudio) {
                         const studioMenuHtml = `
@@ -305,7 +324,17 @@
                             </div>`;
                         L.popup({ offset: [0, -20], closeButton: false }).setLatLng(m.getLatLng()).setContent(studioMenuHtml).openOn(map);
                     } else { openProject(p); }
+                };
+
+                // Asignar clic al marcador y al tooltip
+                m.on('click', handleProjectClick);
+                m.on('tooltipopen', (e) => {
+                    e.tooltip.getElement().addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        handleProjectClick();
+                    });
                 });
+
                 markersMap[p.title] = m;
                 markerList.push(m);
             });
