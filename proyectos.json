@@ -544,5 +544,44 @@
     "desc": "Puesta en valor de fachada y exteriores. Se renovó el revestimiento plástico y se diseñó un nuevo esquema de iluminación perimetral.",
     "imgCount": 3,
     "imgExt": "webp"
-  }
+  },
+  {
+    "title": "Teodoro García",
+    "folder": "Teodoro García",
+    "year": "2026",
+    "area": "Belgrano",
+    "lat": -34.565163,
+    "lng": -58.441644,
+    "m2": 45,
+    "m2Type": "refaccionado",
+    "desc": "Puesta en valor de unidad de portería.",
+    "imgCount": 3,
+    "imgExt": "webp"
+  },
+  {
+    "title": "Urabano",
+    "folder": "Gral. Rodriguez",
+    "year": "2026",
+    "area": "Gral. Rodríguez",
+    "lat": -34.670834,
+    "lng": -58.969005,
+    "m2": 45,
+    "m2Type": "construido",
+    "desc": "Masterplan de aldea urbana para la tercera edad. Basado en la escala media de la manzana, estudiando como se puede generar una nueva manera de vinclarse en un espacio público común con espíritu de comunidad",
+    "imgCount": 3,
+    "imgExt": "webp"
+  },
+  {
+    "title": "Corrientes",
+    "folder": "Corrientes",
+    "year": "2026",
+    "area": "Martínez",
+    "lat": -34.493929254489366,
+    "lng": -58.503369903849624,
+    "m2": 130,
+    "m2Type": "refaccionado",
+    "desc": "Remodelación de vivinda unifamiliar. Cambio de distribuciones para una espacialidad más amplia y simple. Nueva manera de hábitar.",
+    "imgCount": 3,
+    "imgExt": "webp"
+  }, 
 ]
