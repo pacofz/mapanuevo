@@ -339,7 +339,7 @@
   },
   {
     "title": "Rincon de la Costa",
-    "folder": "Rincon de la Costa",
+    "folder": "rincon",
     "year": "2024",
     "area": "Tigre",
     "lat": -34.410870341793794,
@@ -347,7 +347,7 @@
     "m2": 44,
     "m2Type": "refaccionado",
     "desc": "Proyecto de modernización para vivienda unifamiliar. Se cambiaron todas las aberturas por perfiles de PVC con doble vidriado térmico.",
-    "imgCount": 3,
+    "imgCount": 1,
     "imgExt": "webp"
   },
   {
