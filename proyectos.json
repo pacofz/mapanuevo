@@ -583,5 +583,18 @@
     "desc": "Remodelación de vivinda unifamiliar. Cambio de distribuciones para una espacialidad más amplia y simple. Nueva manera de hábitar.",
     "imgCount": 3,
     "imgExt": "webp"
+  },
+  {
+    "title": "Olivos",
+    "folder": "Olivos",
+    "year": "2026",
+    "area": "Pilar",
+    "lat": -34.46840967389851,
+    "lng": -58.70608490530589,
+    "m2": 130,
+    "m2Type": "refaccionado",
+    "desc": "Remodelación de vivinda unifamiliar. Cambio de distribuciones para una espacialidad más amplia y simple. Nueva manera de hábitar.",
+    "imgCount": 3,
+    "imgExt": "webp"
   }
 ]
